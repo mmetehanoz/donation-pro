@@ -290,6 +290,77 @@ const Hero = () => {
   );
 };
 
+const SignageSection = () => {
+  const [isBabilActive, setIsBabilActive] = useState(false);
+
+  return (
+    <section className="py-12 bg-slate-900 flex flex-col items-center justify-center border-t border-slate-800">
+      {/* Control Panel */}
+      <div className="mb-8 p-4 bg-slate-800 rounded-xl border border-slate-700 shadow-lg flex flex-col items-center gap-2">
+        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Sistem Kontrol</span>
+        <button
+          onClick={() => setIsBabilActive(!isBabilActive)}
+          className={`
+            relative px-8 py-3 rounded-lg font-bold uppercase tracking-widest transition-all duration-300 transform active:scale-95
+            ${isBabilActive
+              ? 'bg-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.5)] scale-105'
+              : 'bg-slate-700 text-slate-500 hover:bg-slate-600'
+            }
+          `}
+        >
+          <div className="flex items-center gap-2">
+            <Zap className={`w-5 h-5 ${isBabilActive ? 'fill-current' : ''}`} />
+            Babil
+          </div>
+          {/* Indicator Light */}
+          <div className={`absolute top-2 right-2 w-2 h-2 rounded-full transition-colors duration-300 ${isBabilActive ? 'bg-white shadow-[0_0_5px_white]' : 'bg-slate-900'}`}></div>
+        </button>
+      </div>
+
+      {/* The Signage */}
+      <div className="relative group perspective-1000">
+        {/* Wire/Hanging effect */}
+        <div className="absolute -top-12 left-10 w-1 h-12 bg-slate-800"></div>
+        <div className="absolute -top-12 right-10 w-1 h-12 bg-slate-800"></div>
+
+        <div className={`
+          relative px-12 py-8 rounded-2xl border-4 transition-all duration-700
+          ${isBabilActive
+            ? 'border-emerald-500 bg-slate-900/50 shadow-[0_0_50px_rgba(16,185,129,0.3),inset_0_0_30px_rgba(16,185,129,0.1)]'
+            : 'border-slate-800 bg-slate-900 shadow-none'
+          }
+        `}>
+          <h2 className={`
+            text-4xl md:text-6xl font-black text-center uppercase tracking-tighter transition-all duration-300 select-none
+            ${isBabilActive
+              ? 'text-white drop-shadow-[0_0_10px_rgba(16,185,129,1)]'
+              : 'text-slate-800 drop-shadow-none'
+            }
+          `}>
+            <span className={isBabilActive ? 'animate-pulse' : ''}>İnsani</span>
+            <span className="mx-4">Yardım</span>
+            <span className={isBabilActive ? 'animate-[pulse_3s_infinite]' : ''}>Derneği</span>
+          </h2>
+
+          {/* Flickering subtitle effect */}
+          <p className={`
+            mt-2 text-center font-mono text-sm tracking-[0.5em] transition-all duration-500
+            ${isBabilActive ? 'text-emerald-400 opacity-90 drop-shadow-[0_0_5px_rgba(16,185,129,0.8)]' : 'text-slate-800 opacity-20'}
+          `}>
+            EST. 2024
+          </p>
+        </div>
+
+        {/* Reflection on floor */}
+        <div className={`
+            absolute -bottom-8 left-0 right-0 h-8 bg-gradient-to-b from-emerald-500/20 to-transparent blur-xl transition-opacity duration-500 pointer-events-none
+            ${isBabilActive ? 'opacity-100' : 'opacity-0'}
+        `}></div>
+      </div>
+    </section>
+  );
+};
+
 const Features = () => {
   return (
     <section id="features" className="py-20 bg-slate-800">
@@ -543,6 +614,7 @@ function App() {
     <div className="min-h-screen bg-slate-900 font-sans text-gray-100 selection:bg-emerald-500 selection:text-white">
       <Navbar />
       <Hero />
+      <SignageSection />
       <Features />
       <Pricing />
       <Testimonials />
