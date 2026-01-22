@@ -297,7 +297,7 @@ const SignageSection = () => {
     <section className="py-12 bg-slate-900 flex flex-col items-center justify-center border-t border-slate-800">
       {/* Control Panel */}
       <div className="mb-8 p-4 bg-slate-800 rounded-xl border border-slate-700 shadow-lg flex flex-col items-center gap-2">
-        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Sistem Kontrol</span>
+        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">TIKLAYIN, PARLAYIN</span>
         <button
           onClick={() => setIsBabilActive(!isBabilActive)}
           className={`
