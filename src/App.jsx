@@ -460,8 +460,16 @@ const DemoRequestForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Verileri:', formData);
-    alert("Talebiniz alınmıştır! (Veriler konsola yazıldı)");
+
+    const message = `*Yeni Demo Talebi*%0A%0A` +
+      `*Ad Soyad:* ${formData.name}%0A` +
+      `*Kurum:* ${formData.organization}%0A` +
+      `*Telefon:* ${formData.phone}%0A` +
+      `*Bağışçı Sayısı:* ${formData.donorCount}`;
+
+    window.open(`https://wa.me/905058326123?text=${message}`, '_blank');
+
+    // Formu temizle
     setFormData({ name: '', organization: '', phone: '', donorCount: '' });
   };
 
