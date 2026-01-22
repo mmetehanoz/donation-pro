@@ -116,13 +116,7 @@ const PRICING_PLANS = [
   }
 ];
 
-const REFERENCES = [
-  { name: "Global Hope", logo: "GH" },
-  { name: "Future Foundation", logo: "FF" },
-  { name: "Green World", logo: "GW" },
-  { name: "EduCare", logo: "EC" },
-  { name: "Life Support", logo: "LS" }
-];
+
 
 // --- COMPONENTS ---
 
@@ -144,7 +138,7 @@ const Navbar = () => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <a href="#features" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Özellikler</a>
                 <a href="#pricing" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Paketler</a>
-                <a href="#testimonials" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Referanslar</a>
+
               </div>
             </div>
           </div>
@@ -165,7 +159,7 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#features" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Özellikler</a>
             <a href="#pricing" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Paketler</a>
-            <a href="#testimonials" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Referanslar</a>
+
           </div>
         </div>
       )}
@@ -198,10 +192,16 @@ const Hero = () => {
               Bağışçılarınızı daha iyi tanıyın, kampanyalarınızı verilerle yönetin ve gelirlerinizi artırın. Modern, güvenli ve ölçeklenebilir yönetim platformu.
             </p>
             <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
-              <button className="bg-blue-700 hover:bg-blue-800 text-white text-lg font-semibold px-8 py-4 rounded-xl shadow-lg shadow-blue-700/30 transition-all transform hover:-translate-y-1">
+              <button
+                onClick={() => {
+                  const message = encodeURIComponent("Selamun Aleykum, derneğimiz-vakfımız için bağış sistemi hakkında görüşmek istiyoruz...");
+                  window.open(`https://wa.me/905058326123?text=${message}`, '_blank');
+                }}
+                className="bg-blue-700 hover:bg-blue-800 text-white text-lg font-semibold px-8 py-4 rounded-xl shadow-lg shadow-blue-700/30 transition-all transform hover:-translate-y-1"
+              >
                 Toplantı Talep Et
               </button>
-              <p className="mt-3 text-sm text-gray-500">5 gün ücretsiz deneme • Kredi kartı gerekmez</p>
+
             </div>
           </div>
 
@@ -448,24 +448,7 @@ const Pricing = () => {
   );
 };
 
-const Testimonials = () => {
-  return (
-    <section id="testimonials" className="py-12 bg-slate-50 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-8">
-          Güvenen 500+ Vakıf ve Dernek
-        </p>
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-          {REFERENCES.map((ref, i) => (
-            <div key={i} className="flex items-center justify-center h-12">
-              <span className="text-2xl font-black text-slate-800">{ref.logo}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+
 
 const DemoRequestForm = () => {
   const [formData, setFormData] = useState({
@@ -599,13 +582,74 @@ const Footer = () => {
           <Shield className="w-6 h-6 text-slate-600" />
           <span className="text-gray-400 font-semibold">DonationSys &copy; 2024</span>
         </div>
-        <div className="flex space-x-6">
-          <a href="#" className="text-gray-500 hover:text-white transition-colors">Gizlilik</a>
-          <a href="#" className="text-gray-500 hover:text-white transition-colors">Kullanım Şartları</a>
-          <a href="#" className="text-gray-500 hover:text-white transition-colors">İletişim</a>
-        </div>
+
       </div>
     </footer>
+  );
+};
+
+const FloatingWhatsAppButton = () => {
+  // Işık efekti için state (6 saniyede bir tetiklenecek)
+  const [shine, setShine] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShine(true);
+      // Animasyon 1sn sürdüğü için 1sn sonra state'i resetle (CSS animation-iteration-count: 1 yapabilmek için class toggle)
+      setTimeout(() => setShine(false), 1000);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      <style>{`
+        @keyframes heartbeat {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+        @keyframes shine-move {
+          0% { left: -100%; opacity: 0; }
+          50% { opacity: 0.5; }
+          100% { left: 200%; opacity: 0; }
+        }
+      `}</style>
+      <a
+        href="https://wa.me/905058326123?text=Selamun%20Aleykum%2C%20derne%C4%9Fimiz-vakf%C4%B1m%C4%B1z%20i%C3%A7in%20ba%C4%9F%C4%B1%C5%9F%20sistemi%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyoruz..."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 group flex items-center justify-center"
+        aria-label="WhatsApp ile iletişime geç"
+      >
+        <div
+          className="relative flex items-center justify-center w-16 h-16 bg-green-500 rounded-full shadow-2xl hover:bg-green-600 transition-colors duration-300"
+          style={{ animation: 'heartbeat 2s infinite ease-in-out' }}
+        >
+          {/* WhatsApp Icon (Lucide MessageSquare kullanıyoruz ama benzetebiliriz veya text ekleyebiliriz) 
+               Burada MessageSquare yerine daha spesifik bir ikon yoksa, basit bir SVG veya MessageSquare kullanalım.
+               Lucide içinde 'MessageCircle' daha yuvarlak ve benzer.
+           */}
+          {/* WhatsApp SVG Logo */}
+          <svg viewBox="0 0 24 24" className="w-9 h-9 text-white fill-current" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+
+          {/* Online Indicator Badge */}
+          <span className="absolute top-0 right-0 flex h-4 w-4">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 border-2 border-white"></span>
+          </span>
+
+          {/* Işık Efekti */}
+          <div className={`absolute top-0 w-full h-full rounded-full overflow-hidden pointer-events-none`}>
+            <div
+              className={`absolute top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent transform -skew-x-12 ${shine ? 'block' : 'hidden'}`}
+              style={{ animation: shine ? 'shine-move 1s ease-in-out forwards' : 'none' }}
+            />
+          </div>
+        </div>
+      </a>
+    </>
   );
 };
 
@@ -617,9 +661,11 @@ function App() {
       <SignageSection />
       <Features />
       <Pricing />
-      <Testimonials />
+
+
       <DemoRequestForm />
       <Footer />
+      <FloatingWhatsAppButton />
     </div>
   );
 }
