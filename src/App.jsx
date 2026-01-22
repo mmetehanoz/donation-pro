@@ -137,7 +137,7 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <a href="#features" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Özellikler</a>
-                <a href="#pricing" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Paketler</a>
+                {/* <a href="#pricing" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Paketler</a> */}
 
               </div>
             </div>
@@ -158,7 +158,7 @@ const Navbar = () => {
         <div className="md:hidden bg-slate-900 border-b border-slate-800">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#features" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Özellikler</a>
-            <a href="#pricing" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Paketler</a>
+            {/* <a href="#pricing" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Paketler</a> */}
 
           </div>
         </div>
@@ -660,7 +660,7 @@ function App() {
       <Hero />
       <SignageSection />
       <Features />
-      <Pricing />
+      {/* <Pricing /> */}
 
 
       <DemoRequestForm />
