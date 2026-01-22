@@ -207,9 +207,9 @@ const Hero = () => {
 
           {/* Right Visual */}
           <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-            <div className="relative mx-auto w-full rounded-2xl shadow-2xl lg:max-w-md overflow-hidden bg-slate-800 border border-slate-700 group cursor-default h-[28rem] sm:h-[40rem]">
+            <div className="relative mx-auto w-full rounded-2xl shadow-2xl lg:max-w-md overflow-hidden bg-slate-800 border border-slate-700 group cursor-default h-auto sm:h-[40rem]">
               {/* Animated Donation Dashboard */}
-              <div className="p-6 relative z-10 flex flex-col h-full">
+              <div className="p-6 relative z-10 flex flex-col sm:h-full">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex space-x-2">
