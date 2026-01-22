@@ -183,7 +183,7 @@ const Hero = () => {
         <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
           {/* Left Content */}
           <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-            <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
+            <h1 className="text-3xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
               <span className="block">Vakfınızın</span>
               <span className="block text-emerald-500">Dijital Dönüşümü</span>
               <span className="block">Burada Başlıyor</span>
@@ -207,7 +207,7 @@ const Hero = () => {
 
           {/* Right Visual */}
           <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-            <div className="relative mx-auto w-full rounded-2xl shadow-2xl lg:max-w-md overflow-hidden bg-slate-800 border border-slate-700 group cursor-default h-[40rem]">
+            <div className="relative mx-auto w-full rounded-2xl shadow-2xl lg:max-w-md overflow-hidden bg-slate-800 border border-slate-700 group cursor-default h-[28rem] sm:h-[40rem]">
               {/* Animated Donation Dashboard */}
               <div className="p-6 relative z-10 flex flex-col h-full">
                 {/* Header */}
@@ -297,7 +297,7 @@ const SignageSection = () => {
     <section className="py-12 bg-slate-900 flex flex-col items-center justify-center border-t border-slate-800">
       {/* Control Panel */}
       <div className="mb-8 p-4 bg-slate-800 rounded-xl border border-slate-700 shadow-lg flex flex-col items-center gap-2">
-        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">TIKLAYIN, PARLAYIN</span>
+        <span className="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">TIKLAYIN, PARLAYIN</span>
         <button
           onClick={() => setIsBabilActive(!isBabilActive)}
           className={`
@@ -331,7 +331,7 @@ const SignageSection = () => {
           }
         `}>
           <h2 className={`
-            text-4xl md:text-6xl font-black text-center uppercase tracking-tighter transition-all duration-300 select-none
+            text-3xl md:text-6xl font-black text-center uppercase tracking-tighter transition-all duration-300 select-none
             ${isBabilActive
               ? 'text-white drop-shadow-[0_0_10px_rgba(16,185,129,1)]'
               : 'text-slate-800 drop-shadow-none'
@@ -626,11 +626,11 @@ const FloatingWhatsAppButton = () => {
         href="https://wa.me/905058326123?text=Selamun%20Aleykum%2C%20derne%C4%9Fimiz-vakf%C4%B1m%C4%B1z%20i%C3%A7in%20ba%C4%9F%C4%B1%C5%9F%20sistemi%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyoruz..."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 group flex items-center justify-center"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 group flex items-center justify-center"
         aria-label="WhatsApp ile iletişime geç"
       >
         <div
-          className="relative flex items-center justify-center w-16 h-16 bg-green-500 rounded-full shadow-2xl hover:bg-green-600 transition-colors duration-300"
+          className="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-green-500 rounded-full shadow-2xl hover:bg-green-600 transition-colors duration-300"
           style={{ animation: 'heartbeat 2s infinite ease-in-out' }}
         >
           {/* WhatsApp Icon (Lucide MessageSquare kullanıyoruz ama benzetebiliriz veya text ekleyebiliriz) 
@@ -663,7 +663,7 @@ const FloatingWhatsAppButton = () => {
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900 font-sans text-gray-100 selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-slate-900 font-sans text-gray-100 selection:bg-emerald-500 selection:text-white overflow-x-hidden">
       <Navbar />
       <Hero />
       <SignageSection />
